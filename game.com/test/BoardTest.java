@@ -2,11 +2,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
 
-public class KalahaTest {
+public class BoardTest {
 
 	@Test
 	public void constructorTest() {
-		Kalaha kalaha= new Kalaha();
-		assertNotNull(kalaha);
+		Board board= new Board();
+		assertNotNull(board);
 	}
 }

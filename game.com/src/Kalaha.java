@@ -1,4 +1,2 @@
-public class Kalaha {
-
-
+public class Kalaha extends BowlBase{
 }
