@@ -30,7 +30,7 @@ public class BoardTest {
 	@Test
 	public void playStonesEndInOwnBowl() {
 		Board board = new Board(player1, player2, initialStones);
-		//Board.distrubute(player1, bowl2);
+		//Board.distribute(player1, bowl2);
 		final int[] expectedStones = new int[] { 4, 0, 5, 5, 5, 5, 0, 4, 4, 4, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
 	}
@@ -38,7 +38,7 @@ public class BoardTest {
 	@Test
 	public void playStonesEndInOwnKalaha() {
 		Board board = new Board(player1, player2, initialStones);
-		//Board.distrubute(player1, bowl3);
+		//Board.distribute(player1, bowl3);
 		final int[] expectedStones = new int[] { 4, 4, 0, 5, 5, 5, 1, 4, 4, 4, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
 	}
@@ -46,7 +46,7 @@ public class BoardTest {
 	@Test
 	public void playStonesEndInOppositeBowl() {
 		Board board = new Board(player1, player2, initialStones);
-		//Board.distrubute(player1, bowl6);
+		//Board.distribute(player1, bowl6);
 		final int[] expectedStones = new int[] { 4, 4, 4, 4, 4, 0, 1, 5, 5, 5, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
 	}
@@ -55,7 +55,7 @@ public class BoardTest {
 	public void playStonePassingOppositeKalaha() {
 		final int[] testStones = new int[] { 1, 1, 1, 1, 1, 8, 5, 1, 1, 1, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		//Board.distrubute(player1, bowl6);
+		//Board.distribute(player1, bowl6);
 		final int[] expectedStones = new int[] { 1, 1, 1, 1, 1, 0, 6, 2, 2, 2, 2, 2, 2, 6  };
 		assertNumberOfStones(board, expectedStones);
 	}
@@ -64,7 +64,7 @@ public class BoardTest {
 	public void play1stoneAndSteal() {
 		final int[] testStones = new int[] { 1, 1, 1, 0, 1, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		//Board.distrubute(player1, bowl3);
+		//Board.distribute(player1, bowl3);
 		final int[] expectedStones = new int[] { 1, 1, 0, 0, 1, 8, 10, 1, 1, 0, 1, 1, 1, 5  };
 		assertNumberOfStones(board, expectedStones);
 	}
