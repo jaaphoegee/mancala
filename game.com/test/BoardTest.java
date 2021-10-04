@@ -5,13 +5,23 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class BoardTest {
 
 	private final int[] initialStones = new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 };
-	private Player player1 = new Player("Jaap");
-	private Player player2 = new Player("Marielle");
+	private static Player player1;
+	private static Player player2;
+
+	@BeforeClass
+	public static void init() {
+		player1 = new Player("Jaap");
+		player2 = new Player("Marielle");
+
+		player1.setOtherPlayer(player2);
+		player2.setOtherPlayer(player1);
+	}
 
 	@Test
 	public void createDefaultBoardTest() {
@@ -31,45 +41,48 @@ public class BoardTest {
 	@Test
 	public void playStonesEndInOwnBowl() {
 		Board board = new Board(player1, player2, initialStones);
-		Player player = board.play(player1, 2);
+		Player nextPlayer = board.play(player1, 2);
 		final int[] expectedStones = new int[] { 4, 0, 5, 5, 5, 5, 0, 4, 4, 4, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
-		assertEquals(player2, player);
+		assertEquals(player2, nextPlayer);
 	}
 
 	@Test
 	public void playStonesEndInOwnKalaha() {
 		Board board = new Board(player1, player2, initialStones);
-		Player player = board.play(player1, 3);
+		Player nextPlayer = board.play(player1, 3);
 		final int[] expectedStones = new int[] { 4, 4, 0, 5, 5, 5, 1, 4, 4, 4, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
-		assertEquals(player1, player);
+		assertEquals(player1, nextPlayer);
 	}
 
 	@Test
 	public void playStonesAndPassOwnKalaha() {
 		Board board = new Board(player1, player2, initialStones);
-		//Board.play(player1, bowl6);
+		Player nextPlayer = board.play(player1, 6);
 		final int[] expectedStones = new int[] { 4, 4, 4, 4, 4, 0, 1, 5, 5, 5, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
+		assertEquals(player2, nextPlayer);
 	}
 
 	@Test
 	public void playStonePassingOppositeKalaha() {
 		final int[] testStones = new int[] { 1, 1, 1, 1, 1, 8, 5, 1, 1, 1, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		//Board.play(player1, bowl6);
+		Player nextPlayer = board.play(player1, 6);
 		final int[] expectedStones = new int[] { 2, 1, 1, 1, 1, 0, 6, 2, 2, 2, 2, 2, 2, 5  };
 		assertNumberOfStones(board, expectedStones);
+		assertEquals(player2, nextPlayer);
 	}
 
 	@Test
 	public void play1stoneAndSteal() {
 		final int[] testStones = new int[] { 1, 1, 1, 0, 1, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		//Board.play(player1, bowl3);
+		Player nextPlayer = board.play(player1, 3);
 		final int[] expectedStones = new int[] { 1, 1, 0, 0, 1, 8, 10, 1, 1, 0, 1, 1, 1, 5  };
 		assertNumberOfStones(board, expectedStones);
+		assertEquals(player2, nextPlayer);
 	}
 
 	@Test

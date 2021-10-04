@@ -13,4 +13,8 @@ public class Player {
 	public Player getOtherPlayer() {
 		return this.otherPlayer;
 	}
+
+	public void setOtherPlayer(Player player) {
+		otherPlayer = player;
+	}
 }

@@ -25,12 +25,25 @@ public class BowlBase {
 	}
 
 	protected Player play(Player player, int distributeStones) {
-			numberOfStones++;
-			if ( --distributeStones  > 0 ) {
+			if(isKalaha() && !this.owner.equals(player)) {
 				return getNext().play(player, distributeStones);
 			}
-
-			// todo switch player?
+			if (distributeStones - 1  > 0 ) {
+				numberOfStones++;
+				return getNext().play(player, --distributeStones);
+			}
+			if(numberOfStones == 0 && this.owner.equals(player)) {
+				// steal
+				// optellen bij eigen steen
+				// add to Kalaha
+			}
+			if(isKalaha()) {
+				return player;
+			}
 			return player.getOtherPlayer();
 	}
+
+	private boolean isKalaha() {
+		return Kalaha.class.isInstance(this);
+ 	}
 }
