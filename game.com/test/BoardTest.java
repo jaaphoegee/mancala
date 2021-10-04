@@ -18,7 +18,7 @@ public class BoardTest {
 	}
 
 	@Test
-	public void createBoarTest() {
+	public void createBoardTest() {
 		Player player1 = new Player("Jaap");
 		Player player2 = new Player("Marielle");
 		final int[] testStones = new int[] { 6, 2, 0, 3, 3, 4, 6, 3, 3, 0, 6, 2, 4, 6 };
