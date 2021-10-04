@@ -38,6 +38,12 @@ public class Board {
 		clc = createBoard();
 	}
 
+	public Board(Player player1, Player player2, int[] stones) {
+		this.player1 = player1;
+		this.player2 = player2;
+		clc = createBoard(stones);
+	}
+
 	private CircularLinkedList createBoard() {
 		CircularLinkedList clc = new CircularLinkedList();
 		clc.add(new Bowl(player1));
@@ -54,6 +60,25 @@ public class Board {
 		clc.add(new Bowl(player2));
 		clc.add(new Bowl(player2));
 		clc.add(new Kalaha(player2));
+		return clc;
+	}
+
+	private CircularLinkedList createBoard(int[] stones) {
+		CircularLinkedList clc = new CircularLinkedList();
+		clc.add(new Bowl(player1, stones[0]));
+		clc.add(new Bowl(player1, stones[1]));
+		clc.add(new Bowl(player1, stones[2]));
+		clc.add(new Bowl(player1, stones[3]));
+		clc.add(new Bowl(player1, stones[4]));
+		clc.add(new Bowl(player1, stones[5]));
+		clc.add(new Kalaha(player1, stones[6]));
+		clc.add(new Bowl(player2, stones[7]));
+		clc.add(new Bowl(player2, stones[8]));
+		clc.add(new Bowl(player2, stones[9]));
+		clc.add(new Bowl(player2, stones[10]));
+		clc.add(new Bowl(player2, stones[11]));
+		clc.add(new Bowl(player2, stones[12]));
+		clc.add(new Kalaha(player2, stones[13]));
 		return clc;
 	}
 

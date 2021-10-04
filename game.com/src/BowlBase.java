@@ -1,7 +1,7 @@
 public class BowlBase {
 	protected BowlBase next;
 	protected Player owner;
-	private int numberOfStones = 4;
+	protected int numberOfStones;
 
 	BowlBase(Player owner) {
 		this.owner = owner;
