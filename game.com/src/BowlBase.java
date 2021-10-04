@@ -25,22 +25,29 @@ public class BowlBase {
 	}
 
 	protected Player play(Player player, int distributeStones) {
+			// TODO move play implementation to subclasses
 			if(isKalaha() && !this.owner.equals(player)) {
-				return getNext().play(player, distributeStones);
-			}
-			if (distributeStones - 1  > 0 ) {
-				numberOfStones++;
-				return getNext().play(player, --distributeStones);
+				return next.play(player, distributeStones);
 			}
 			if(numberOfStones == 0 && this.owner.equals(player)) {
-				// steal
-				// optellen bij eigen steen
-				// add to Kalaha
+				// TODO Ook checken op distributeStones (moet de laatste zijn)
+				int stolen = steal(player, 1);
+			 	//	next.getKahala().add(stolen + 1);
+				return player.getOtherPlayer();
 			}
+			numberOfStones++;
+			if (distributeStones - 1  > 0 ) {
+				return next.play(player, --distributeStones);
+			}
+
 			if(isKalaha()) {
 				return player;
 			}
 			return player.getOtherPlayer();
+	}
+
+	protected int steal(Player player, int steps) {
+		throw new RuntimeException("Steal() should be implemented in subclasses.");
 	}
 
 	private boolean isKalaha() {

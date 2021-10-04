@@ -18,4 +18,16 @@ public class Bowl extends BowlBase {
 		}
 		return ((Bowl)getNext()).distribute(player, bowlNumber);
 	}
+
+	public int steal(Player player, int steps) {
+		if(this.owner.equals(player)) {
+			return next.steal(player, steps++);
+		}
+		if (steps - 1 == 0) {
+			int stolenStones = numberOfStones;
+			numberOfStones = 0;
+			return stolenStones;
+		}
+		return next.steal(player, steps--);
+	}
 }
