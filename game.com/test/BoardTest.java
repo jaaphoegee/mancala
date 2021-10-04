@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
@@ -70,12 +71,12 @@ public class BoardTest {
 
 	@Test
 	public void playLastStoneAndEndGame() {
-
+	assertFalse(true);
 	}
 
 	@Test
 	public void determineWinner() {
-
+		assertFalse(true);
 	}
 
 	private void assertNumberOfStones(Board board, int[] expectedStones) {
