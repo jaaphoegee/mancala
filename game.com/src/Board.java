@@ -5,6 +5,10 @@
 //         1 2 3 4 5 6
 
 public class Board {
+	public Player play(Player player, int bowlNumber) {
+		return bowl1Payer1.distribute(player, bowlNumber);
+	}
+
 	private class CircularLinkedList {
 		private BowlBase head = null;
 		private BowlBase tail = null;
@@ -31,19 +35,19 @@ public class Board {
 	private Player player1;
 	private Player player2;
 	private CircularLinkedList clc;
-
-	public Board(Player player1, Player player2) {
-		this.player1 = player1;
-		this.player2 = player2;
-		final int[] initialStones = new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 };
-		clc = createBoard(initialStones);
-	}
+	Bowl bowl1Payer1;
 
 	public Board(Player player1, Player player2, int[] stones) {
 		this.player1 = player1;
 		this.player2 = player2;
 		clc = createBoard(stones);
+		bowl1Payer1 = (Bowl)clc.getHead();
 	}
+
+	public Board(Player player1, Player player2) {
+		this(player1,player2, new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 });
+	}
+
 
 	private CircularLinkedList createBoard(int[] stones) {
 		CircularLinkedList clc = new CircularLinkedList();
