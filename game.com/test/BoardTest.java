@@ -78,9 +78,9 @@ public class BoardTest {
 	@Test
 	public void play1stoneAndSteal() {
 		final int[] testStones = new int[] { 1, 1, 1, 0, 1, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
+		final int[] expectedStones = new int[] { 1, 1, 0, 0, 1, 8, 10, 1, 1, 0, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
 		Player nextPlayer = board.play(player1, 3);
-		final int[] expectedStones = new int[] { 1, 1, 0, 0, 1, 8, 10, 1, 1, 0, 1, 1, 1, 5  };
 		assertNumberOfStones(board, expectedStones);
 		assertEquals(player2, nextPlayer);
 	}
