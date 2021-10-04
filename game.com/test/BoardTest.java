@@ -7,24 +7,75 @@ import org.junit.Test;
 
 public class BoardTest {
 
+	private final int[] initialStones = new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 };
+	private Player player1 = new Player("Jaap");
+	private Player player2 = new Player("Marielle");
+
 	@Test
-	public void constructorTest() {
-		Player player1 = new Player("Jaap");
-		Player player2 = new Player("Marielle");
+	public void createDefaultBoardTest() {
 		Board board = new Board(player1, player2);
 		assertNotNull(board);
-		final int[] initialStones = new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 };
 		assertNumberOfStones(board, initialStones);
 	}
 
 	@Test
-	public void createBoardTest() {
-		Player player1 = new Player("Jaap");
-		Player player2 = new Player("Marielle");
+	public void createBoardWithSpecificNumberOfStonesTest() {
 		final int[] testStones = new int[] { 6, 2, 0, 3, 3, 4, 6, 3, 3, 0, 6, 2, 4, 6 };
 		Board board = new Board(player1, player2, testStones);
 		assertNotNull(board);
 		assertNumberOfStones(board, testStones);
+	}
+
+	@Test
+	public void playStonesEndInOwnBowl() {
+		Board board = new Board(player1, player2, initialStones);
+		//Board.distrubute(player1, bowl2);
+		final int[] expectedStones = new int[] { 4, 0, 5, 5, 5, 5, 0, 4, 4, 4, 4, 4, 4, 0 };
+		assertNumberOfStones(board, expectedStones);
+	}
+
+	@Test
+	public void playStonesEndInOwnKalaha() {
+		Board board = new Board(player1, player2, initialStones);
+		//Board.distrubute(player1, bowl3);
+		final int[] expectedStones = new int[] { 4, 4, 0, 5, 5, 5, 1, 4, 4, 4, 4, 4, 4, 0 };
+		assertNumberOfStones(board, expectedStones);
+	}
+
+	@Test
+	public void playStonesEndInOppositeBowl() {
+		Board board = new Board(player1, player2, initialStones);
+		//Board.distrubute(player1, bowl6);
+		final int[] expectedStones = new int[] { 4, 4, 4, 4, 4, 0, 1, 5, 5, 5, 4, 4, 4, 0 };
+		assertNumberOfStones(board, expectedStones);
+	}
+
+	@Test
+	public void playStonePassingOppositeKalaha() {
+		final int[] testStones = new int[] { 1, 1, 1, 1, 1, 8, 5, 1, 1, 1, 1, 1, 1, 5 };
+		Board board = new Board(player1, player2, testStones);
+		//Board.distrubute(player1, bowl6);
+		final int[] expectedStones = new int[] { 1, 1, 1, 1, 1, 0, 6, 2, 2, 2, 2, 2, 2, 6  };
+		assertNumberOfStones(board, expectedStones);
+	}
+
+	@Test
+	public void play1stoneAndSteal() {
+		final int[] testStones = new int[] { 1, 1, 1, 0, 1, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
+		Board board = new Board(player1, player2, testStones);
+		//Board.distrubute(player1, bowl3);
+		final int[] expectedStones = new int[] { 1, 1, 0, 0, 1, 8, 10, 1, 1, 0, 1, 1, 1, 5  };
+		assertNumberOfStones(board, expectedStones);
+	}
+
+	@Test
+	public void playLastStoneAndEndGame() {
+
+	}
+
+	@Test
+	public void determineWinner() {
+
 	}
 
 	private void assertNumberOfStones(Board board, int[] expectedStones) {
