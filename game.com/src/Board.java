@@ -43,20 +43,8 @@ public class Board {
 		this(player1, player2, defaultStones);
 	}
 
-	public Player play(Player player, int bowlNumber) {
-		return bowl1Player1.distribute(player, bowlNumber);
-	}
-
 	public BowlBase getHead() {
 		return list.getHead();
-	}
-
-	public boolean canPlay(Player player) {
-		return bowl1Player1.canPlay(player);
-	}
-
-	public Kalaha getWinner() {
-		return (Kalaha)bowl1Player1.getWinner();
 	}
 
 	private CircularLinkedList createBoard(int[] stones) {

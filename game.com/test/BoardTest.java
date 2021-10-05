@@ -43,7 +43,7 @@ public class BoardTest {
 	@Test
 	public void playStonesEndInOwnBowl() {
 		Board board = new Board(player1, player2, initialStones);
-		Player nextPlayer = board.play(player1, 2);
+		Player nextPlayer = board.bowl1Player1.distribute(player1, 2);
 		final int[] expectedStones = new int[] { 4, 0, 5, 5, 5, 5, 0, 4, 4, 4, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
 		assertEquals(player2, nextPlayer);
@@ -52,7 +52,7 @@ public class BoardTest {
 	@Test
 	public void playStonesEndInOwnKalaha() {
 		Board board = new Board(player1, player2, initialStones);
-		Player nextPlayer = board.play(player1, 3);
+		Player nextPlayer = board.bowl1Player1.distribute(player1, 3);
 		final int[] expectedStones = new int[] { 4, 4, 0, 5, 5, 5, 1, 4, 4, 4, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
 		assertEquals(player1, nextPlayer);
@@ -61,7 +61,7 @@ public class BoardTest {
 	@Test
 	public void playStonesAndPassOwnKalaha() {
 		Board board = new Board(player1, player2, initialStones);
-		Player nextPlayer = board.play(player1, 6);
+		Player nextPlayer =  board.bowl1Player1.distribute(player1, 6);
 		final int[] expectedStones = new int[] { 4, 4, 4, 4, 4, 0, 1, 5, 5, 5, 4, 4, 4, 0 };
 		assertNumberOfStones(board, expectedStones);
 		assertEquals(player2, nextPlayer);
@@ -71,7 +71,7 @@ public class BoardTest {
 	public void playStonePassingOppositeKalaha() {
 		final int[] testStones = new int[] { 1, 1, 1, 1, 1, 8, 5, 1, 1, 1, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		Player nextPlayer = board.play(player1, 6);
+		Player nextPlayer =  board.bowl1Player1.distribute(player1, 6);
 		final int[] expectedStones = new int[] { 2, 1, 1, 1, 1, 0, 6, 2, 2, 2, 2, 2, 2, 5  };
 		assertNumberOfStones(board, expectedStones);
 		assertEquals(player2, nextPlayer);
@@ -82,7 +82,7 @@ public class BoardTest {
 		final int[] testStones = new int[] { 1, 1, 1, 0, 1, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
 		final int[] expectedStones = new int[] { 1, 1, 0, 0, 1, 8, 10, 1, 1, 0, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		Player nextPlayer = board.play(player1, 3);
+		Player nextPlayer = board.bowl1Player1.distribute(player1, 3);
 		assertNumberOfStones(board, expectedStones);
 		assertEquals(player2, nextPlayer);
 	}
@@ -91,16 +91,16 @@ public class BoardTest {
 	public void testEndGameWhileThereAreStillStonesToPlay() {
 		final int[] testStones = new int[] { 1, 1, 1, 0, 1, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		assertTrue(board.canPlay(player1));
-		assertTrue(board.canPlay(player2));
+		assertTrue(board.bowl1Player1.canPlay(player1));
+		assertTrue(board.bowl1Player1.canPlay(player2));
 	}
 
 	@Test
 	public void testEndGameWhenThereAreNoStonesToPlay() {
 		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		assertFalse(board.canPlay(player1));
-		assertTrue(board.canPlay(player2));
+		assertFalse(board.bowl1Player1.canPlay(player1));
+		assertTrue(board.bowl1Player1.canPlay(player2));
 	}
 
 	@Test
@@ -117,7 +117,7 @@ public class BoardTest {
 	public void determineWinner() {
 		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 14 };
 		Board board = new Board(player1, player2, testStones);
-		Kalaha winningKalaha = board.getWinner();
+		Kalaha winningKalaha = (Kalaha) board.bowl1Player1.getWinner();
 		assertTrue(winningKalaha.isOwner(player2));
 		int stones = winningKalaha.getNumberOfStones();
 		assertEquals(14, stones);
@@ -127,7 +127,7 @@ public class BoardTest {
 	public void determineNoWinner() {
 		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 14 };
 		Board board = new Board(player1, player2, testStones);
-		assertNull(board.getWinner());
+		assertNull(board.bowl1Player1.getWinner());
 	}
 
 	private void assertNumberOfStones(Board board, int[] expectedStones) {
