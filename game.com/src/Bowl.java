@@ -10,7 +10,7 @@ public class Bowl extends BowlBase {
 	}
 
 	public Player distribute(Player player, int bowlNumber) {
-		if (owner == player && --bowlNumber == 0) {
+		if (isOwner(player) && --bowlNumber == 0) {
 			int distributeStones = numberOfStones;
 			numberOfStones = 0;
 			return getNext().play(player, distributeStones);
@@ -19,7 +19,7 @@ public class Bowl extends BowlBase {
 	}
 
 	public int steal(Player player, int steps) {
-		if (this.owner.equals(player)) {
+		if (isOwner(player)) {
 			return next.steal(player, ++steps);
 		}
 		if (steps - 1 == 0) {

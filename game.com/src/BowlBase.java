@@ -28,10 +28,18 @@ public abstract class BowlBase {
 
 	abstract  protected int steal(Player player, int steps);
 
+	protected boolean isOwner(Player player) {
+		return this.owner.equals(player);
+	}
+
 	protected BowlBase getKahala() {
-		if (this instanceof Kalaha) {
+		if (isKalaha()) {
 			return this;
 		}
 		return next.getKahala();
+	}
+
+	private boolean isKalaha() {
+		return Kalaha.class.isInstance(this);
 	}
 }

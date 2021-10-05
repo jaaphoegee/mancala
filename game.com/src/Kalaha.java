@@ -14,11 +14,11 @@ public class Kalaha extends BowlBase {
 	}
 
 	public Player play(Player player, int distributeStones) {
-		if (!this.owner.equals(player)) {
+		if(!isOwner(player)) {
 			return next.play(player, distributeStones);
 		}
 		numberOfStones++;
-		if (distributeStones - 1 > 0) {
+		if(distributeStones > 1) {
 			return next.play(player, --distributeStones);
 		}
 		return player;
