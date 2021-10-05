@@ -145,21 +145,4 @@ public class BoardTest {
 
 		return stones.stream().mapToInt(i -> i).toArray();
 	}
-
-	private String toString(Board board) {
-		StringBuilder builder = new StringBuilder();
-		BowlBase head = board.getHead();
-		BowlBase element = head;
-		do {
-			builder.append(element.getClass().getName())
-					.append(" ")
-					.append(element.owner.getName())
-					.append(" ")
-					.append(element.getNumberOfStones())
-					.append("\n");
-			element = element.getNext();
-		} while (element != head);
-
-		return builder.toString();
-	}
 }
