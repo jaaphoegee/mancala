@@ -1,8 +1,7 @@
 public class Kalaha extends BowlBase {
 
 	Kalaha(Player owner) {
-		super(owner);
-		numberOfStones = 0;
+		this(owner, 0);
 	}
 
 	Kalaha(Player owner, int numberOfStones) {

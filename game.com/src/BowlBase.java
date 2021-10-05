@@ -3,12 +3,8 @@ public abstract class BowlBase {
 	protected Player owner;
 	protected int numberOfStones;
 
-	BowlBase(Player owner) {
-		this.owner = owner;
-	}
-
 	BowlBase(Player owner, int stones) {
-		this(owner);
+		this.owner = owner;
 		this.numberOfStones = stones;
 	}
 
