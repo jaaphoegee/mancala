@@ -63,6 +63,7 @@ public class Bowl extends BowlBase {
 		return next.canPlay(player);
 	}
 
+	@Override
 	public void collectStones(Player player, int stonesToCollect) {
 		stonesToCollect += numberOfStones;
 		numberOfStones = 0;
