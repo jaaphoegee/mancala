@@ -151,7 +151,12 @@ public class BoardTest {
 		BowlBase head = board.getHead();
 		BowlBase element = head;
 		do {
-			builder.append(element.getClass().getName() + " " + element.owner.getName() + " " + element.getNumberOfStones() + "\n");
+			builder.append(element.getClass().getName())
+					.append(" ")
+					.append(element.owner.getName())
+					.append(" ")
+					.append(element.getNumberOfStones())
+					.append("\n");
 			element = element.getNext();
 		} while (element != head);
 

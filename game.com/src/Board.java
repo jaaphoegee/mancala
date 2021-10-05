@@ -6,17 +6,13 @@
 
 public class Board {
 
-	private class CircularLinkedList {
+	static private class CircularLinkedList {
 		private BowlBase head = null;
 		private BowlBase tail = null;
 
 
 		public BowlBase getHead() {
 			return head;
-		}
-
-		public BowlBase getTail() {
-			return tail;
 		}
 
 		public void add(BowlBase node) {
@@ -31,9 +27,9 @@ public class Board {
 	}
 
 	private static final int[] defaultStones =  new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 };
-	private Player player1;
-	private Player player2;
-	private CircularLinkedList clc;
+	private final Player player1;
+	private final Player player2;
+	private final CircularLinkedList clc;
 	Bowl bowl1Payer1;
 
 	public Board(Player player1, Player player2, int[] stones) {

@@ -47,8 +47,6 @@ public class KalahaTest {
 	public void voidTestPlayOtherPlayersKalahaShouldNotUpdate() {
 		Kalaha kalaha = new Kalaha(player1);
 		kalaha.setNext(new Bowl(player2));
-
-		Player player = kalaha.play(player2, 1);
 		assertEquals(0, kalaha.getNumberOfStones());
 	}
 }
