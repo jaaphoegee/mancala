@@ -34,5 +34,5 @@ public abstract class BowlBase {
 
 	abstract protected void collectStones(Player player, int stonesToCollect);
 
-	abstract protected BowlBase getWinner();
+	abstract protected BowlBase determineWinner();
 }

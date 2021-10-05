@@ -50,8 +50,8 @@ public class Bowl extends BowlBase {
 	}
 
 	@Override
-	public BowlBase getWinner() {
-		return next.getWinner();
+	public BowlBase determineWinner() {
+		return next.determineWinner();
 	}
 
 	@Override

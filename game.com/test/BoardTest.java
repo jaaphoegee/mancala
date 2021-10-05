@@ -117,7 +117,7 @@ public class BoardTest {
 	public void determineWinner() {
 		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 14 };
 		Board board = new Board(player1, player2, testStones);
-		Kalaha winningKalaha = (Kalaha) board.bowl1Player1.getWinner();
+		Kalaha winningKalaha = (Kalaha) board.bowl1Player1.determineWinner();
 		assertTrue(winningKalaha.isOwner(player2));
 		int stones = winningKalaha.getNumberOfStones();
 		assertEquals(14, stones);
@@ -127,7 +127,7 @@ public class BoardTest {
 	public void determineNoWinner() {
 		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 14 };
 		Board board = new Board(player1, player2, testStones);
-		assertNull(board.bowl1Player1.getWinner());
+		assertNull(board.bowl1Player1.determineWinner());
 	}
 
 	private void assertNumberOfStones(Board board, int[] expectedStones) {

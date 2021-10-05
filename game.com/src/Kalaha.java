@@ -35,7 +35,7 @@ public class Kalaha extends BowlBase {
 	}
 
 	@Override
-	public BowlBase getWinner() {
+	public BowlBase determineWinner() {
 		Kalaha otherKalaha = (Kalaha)next.getKahala();
 		if (numberOfStones > otherKalaha.getNumberOfStones()) {
 			return this;
