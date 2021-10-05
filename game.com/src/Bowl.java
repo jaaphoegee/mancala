@@ -63,9 +63,9 @@ public class Bowl extends BowlBase {
 		return next.canPlay(player);
 	}
 
-	public void collectStones(Player player) {
-		((Kalaha)getKahala()).add(numberOfStones); //#todo not nice using Kalaha
+	public void collectStones(Player player, int stonesToCollect) {
+		stonesToCollect += numberOfStones;
 		numberOfStones = 0;
-		next.collectStones(player);
+		next.collectStones(player, stonesToCollect);
 	}
 }

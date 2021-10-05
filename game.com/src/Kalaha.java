@@ -56,9 +56,10 @@ public class Kalaha extends BowlBase {
 	}
 
 	@Override
-	public void collectStones(Player player) {
+	public void collectStones(Player player, int stonesToCollect) {
 		if (!isOwner(player)) {
-			next.collectStones(player);
+			next.collectStones(player, stonesToCollect);
 		}
+		numberOfStones += stonesToCollect;
 	}
 }

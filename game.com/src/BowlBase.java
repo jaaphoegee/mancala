@@ -36,7 +36,7 @@ public abstract class BowlBase {
 
 	abstract protected boolean canPlay(Player player);
 
-	abstract protected void collectStones(Player player);
+	abstract protected void collectStones(Player player, int stonesToCollect);
 
 	abstract protected BowlBase getWinner();
 }
