@@ -11,6 +11,7 @@ public class Board {
 		private BowlBase head = null;
 		private BowlBase tail = null;
 
+
 		public BowlBase getHead() {
 			return head;
 		}
@@ -30,6 +31,7 @@ public class Board {
 		}
 	}
 
+	private static final int[] defaultStones =  new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 };
 	private Player player1;
 	private Player player2;
 	private CircularLinkedList clc;
@@ -43,7 +45,7 @@ public class Board {
 	}
 
 	public Board(Player player1, Player player2) {
-		this(player1, player2, new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 });
+		this(player1, player2, defaultStones);
 	}
 
 	public Player play(Player player, int bowlNumber) {

@@ -1,4 +1,4 @@
-public class BowlBase {
+public abstract class BowlBase {
 	protected BowlBase next;
 	protected Player owner;
 	protected int numberOfStones;
@@ -24,13 +24,9 @@ public class BowlBase {
 		next = node;
 	}
 
-	protected Player play(Player player, int distributeStones) {
-		throw new RuntimeException("player() should be implemented in subclasses.");
-	}
+	abstract protected Player play(Player player, int distributeStones);
 
-	protected int steal(Player player, int steps) {
-		throw new RuntimeException("Steal() should be implemented in subclasses.");
-	}
+	abstract  protected int steal(Player player, int steps);
 
 	protected BowlBase getKahala() {
 		if (this instanceof Kalaha) {
