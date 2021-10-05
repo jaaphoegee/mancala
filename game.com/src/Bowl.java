@@ -45,14 +45,17 @@ public class Bowl extends BowlBase {
 		return player.getOtherPlayer();
 	}
 
+	@Override
 	public BowlBase getKahala() {
 		return next.getKahala();
 	}
 
+	@Override
 	public BowlBase getWinner() {
 		return next.getWinner();
 	}
 
+	@Override
 	public boolean canPlay(Player player) {
 		if (isOwner(player) && numberOfStones > 0) {
 			return true;
