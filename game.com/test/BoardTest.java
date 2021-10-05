@@ -86,12 +86,39 @@ public class BoardTest {
 	}
 
 	@Test
-	public void playLastStoneAndEndGame() {
+	public void testEndGameWhileThereAreStillStonesToPlay() {
+		final int[] testStones = new int[] { 1, 1, 1, 0, 1, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
+		Board board = new Board(player1, player2, testStones);
+		/*
+		 * assertTrue( board.canPlay(player1));
+		 * assertTrue( board.canPlay(player2));
+		 */
 	assertFalse(true);
 	}
 
 	@Test
-	public void determineWinner() {
+	public void testEndGameWhenThereAreNoStonesToPlay() {
+		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 5 };
+		Board board = new Board(player1, player2, testStones);
+		/*
+		 * assertFalse( board.canPlay(player1));
+		 * assertTrue( board.canPlay(player2));
+		 */
+
+		assertFalse(true);
+	}
+
+	@Test
+	public void determineWinner()
+	{
+		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
+		Board board = new Board(player1, player2, testStones);
+		/*
+		 * winner = board.GetWinner();
+		 * assertEquals(player2, winner);
+		 * stones = board.getKalaha(winner);
+		 * assertEquals(14, stones);
+		 */
 		assertFalse(true);
 	}
 
