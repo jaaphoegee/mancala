@@ -24,18 +24,19 @@ public abstract class BowlBase {
 		next = node;
 	}
 
-	abstract protected Player play(Player player, int distributeStones);
-
-	abstract protected int steal(Player player, int steps);
-
 	protected boolean isOwner(Player player) {
 		return this.owner.equals(player);
 	}
 
+	abstract protected Player play(Player player, int distributeStones);
+
+	abstract protected int steal(Player player, int steps);
+
 	abstract protected BowlBase getKahala();
 
 	abstract protected boolean canPlay(Player player);
+
 	abstract protected void collectStones(Player player);
 
-	protected abstract BowlBase getWinner();
+	abstract protected BowlBase getWinner();
 }
