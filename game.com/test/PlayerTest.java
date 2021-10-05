@@ -1,9 +1,23 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class PlayerTest {
+	private static Player player1;
+	private static Player player2;
+
+	@BeforeClass
+	public static void init() {
+		player1 = new Player("Jaap");
+		player2 = new Player("Marielle");
+
+		player1.setOtherPlayer(player2);
+		player2.setOtherPlayer(player1);
+	}
+
 	@Test
 	public void constructorTest() {
 		Player player = new Player("Ozone");
@@ -20,5 +34,15 @@ public class PlayerTest {
 
 		assertEquals(player2, player1.getOtherPlayer());
 		assertEquals(player1, player2.getOtherPlayer());
+	}
+
+	@Test
+	public void setNextPlayerTest() {
+		player1.setCurrentPlayer(player2);
+		Assertions.assertEquals(player2, player1.getCurrentPlayer());
+		Assertions.assertEquals(player2, player2.getCurrentPlayer());
+		player1.setCurrentPlayer(player1);
+		Assertions.assertEquals(player1, player1.getCurrentPlayer());
+		Assertions.assertEquals(player1, player2.getCurrentPlayer());
 	}
 }
