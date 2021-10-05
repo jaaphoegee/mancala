@@ -18,6 +18,7 @@ public class Bowl extends BowlBase {
 		return ((Bowl)getNext()).distribute(player, bowlNumber);
 	}
 
+	@Override
 	public int steal(Player player, int steps) {
 		if (isOwner(player)) {
 			return next.steal(player, ++steps);
@@ -30,15 +31,22 @@ public class Bowl extends BowlBase {
 		return next.steal(player, --steps);
 	}
 
+	@Override
 	public Player play(Player player, int distributeStones) {
-		if (distributeStones == 1 && numberOfStones == 0 && this.owner.equals(player)) {
-			((Kalaha)next.getKahala()).add(steal(player, 0) + 1);
+		if (distributeStones == 1 && numberOfStones == 0 && isOwner(player)) {
+			int stolen = steal(player, 0);
+			((Kalaha) next.getKahala()).add(stolen + 1);
 			return player.getOtherPlayer();
 		}
-		numberOfStones++;
-		if (distributeStones - 1 > 0) {
-			return next.play(player, --distributeStones);
-		}
-		return player.getOtherPlayer();
+			numberOfStones++;
+			if (distributeStones - 1 > 0) {
+				return next.play(player, --distributeStones);
+			}
+			return player.getOtherPlayer();
+
+	}
+
+	public BowlBase getKahala() {
+		return next.getKahala();
 	}
 }

@@ -9,10 +9,12 @@ public class Kalaha extends BowlBase {
 		super(owner, numberOfStones);
 	}
 
+	@Override
 	public int steal(Player player, int steps) {
 		return next.steal(player, steps);
 	}
 
+	@Override
 	public Player play(Player player, int distributeStones) {
 		if(!isOwner(player)) {
 			return next.play(player, distributeStones);
@@ -22,6 +24,11 @@ public class Kalaha extends BowlBase {
 			return next.play(player, --distributeStones);
 		}
 		return player;
+	}
+
+	@Override
+	protected BowlBase getKahala() {
+		return this;
 	}
 
 	public void add(int stones) {

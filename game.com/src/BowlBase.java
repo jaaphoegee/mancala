@@ -32,12 +32,7 @@ public abstract class BowlBase {
 		return this.owner.equals(player);
 	}
 
-	protected BowlBase getKahala() {
-		if (isKalaha()) {
-			return this;
-		}
-		return next.getKahala();
-	}
+	abstract protected BowlBase getKahala();
 
 	private boolean isKalaha() {
 		return Kalaha.class.isInstance(this);
