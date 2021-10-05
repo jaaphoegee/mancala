@@ -29,34 +29,22 @@ public class Board {
 	private static final int[] defaultStones =  new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 };
 	private final Player player1;
 	private final Player player2;
-	private final CircularLinkedList clc;
-	Bowl bowl1Payer1;
+	private final CircularLinkedList list;
+	protected Bowl bowl1Player1;
 
 	public Board(Player player1, Player player2, int[] stones) {
 		this.player1 = player1;
 		this.player2 = player2;
-		clc = createBoard(stones);
-		bowl1Payer1 = (Bowl)clc.getHead();
+		list = createBoard(stones);
+		bowl1Player1 = (Bowl)list.getHead();
 	}
 
 	public Board(Player player1, Player player2) {
 		this(player1, player2, defaultStones);
 	}
 
-	public Player play(Player player, int bowlNumber) {
-		return bowl1Payer1.distribute(player, bowlNumber);
-	}
-
 	public BowlBase getHead() {
-		return clc.getHead();
-	}
-
-	public boolean canPlay(Player player) {
-		return bowl1Payer1.canPlay(player);
-	}
-
-	public Kalaha getWinner() {
-		return (Kalaha)bowl1Payer1.getWinner();
+		return list.getHead();
 	}
 
 	private CircularLinkedList createBoard(int[] stones) {
