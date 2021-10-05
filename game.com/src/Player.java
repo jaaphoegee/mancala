@@ -11,10 +11,6 @@ public class Player {
 		return name;
 	}
 
-	public Player getOtherPlayer() {
-		return this.otherPlayer;
-	}
-
 	public void setCurrentPlayer(Player player) {
 		currentPlayer = player;
 		if (otherPlayer.getCurrentPlayer() != player) {
@@ -24,6 +20,10 @@ public class Player {
 
 	public Player getCurrentPlayer() {
 		return currentPlayer;
+	}
+
+	public Player getOtherPlayer() {
+		return this.otherPlayer;
 	}
 
 	public void setOtherPlayer(Player player) {

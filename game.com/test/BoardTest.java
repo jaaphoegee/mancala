@@ -108,8 +108,8 @@ public class BoardTest {
 		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 1, 2, 3, 4, 5, 6, 5 };
 		final int[] expectedStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 26 };
 		Board board = new Board(player1, player2, testStones);
-		board.bowl1Payer1.collectStones(player1);
-		board.bowl1Payer1.collectStones(player2);
+		board.bowl1Player1.collectStones(player1);
+		board.bowl1Player1.collectStones(player2);
 		assertNumberOfStones(board, expectedStones);
 	}
 
