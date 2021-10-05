@@ -26,7 +26,7 @@ public abstract class BowlBase {
 
 	abstract protected Player play(Player player, int distributeStones);
 
-	abstract  protected int steal(Player player, int steps);
+	abstract protected int steal(Player player, int steps);
 
 	protected boolean isOwner(Player player) {
 		return this.owner.equals(player);
@@ -34,7 +34,8 @@ public abstract class BowlBase {
 
 	abstract protected BowlBase getKahala();
 
-	private boolean isKalaha() {
-		return Kalaha.class.isInstance(this);
-	}
+	abstract protected boolean canPlay(Player player);
+	abstract protected void collectStones(Player player);
+
+	protected abstract BowlBase getWinner();
 }

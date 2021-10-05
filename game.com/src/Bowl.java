@@ -35,18 +35,34 @@ public class Bowl extends BowlBase {
 	public Player play(Player player, int distributeStones) {
 		if (distributeStones == 1 && numberOfStones == 0 && isOwner(player)) {
 			int stolen = steal(player, 0);
-			((Kalaha) next.getKahala()).add(stolen + 1);
+			((Kalaha)next.getKahala()).add(stolen + 1);
 			return player.getOtherPlayer();
 		}
-			numberOfStones++;
-			if (distributeStones - 1 > 0) {
-				return next.play(player, --distributeStones);
-			}
-			return player.getOtherPlayer();
-
+		numberOfStones++;
+		if (distributeStones - 1 > 0) {
+			return next.play(player, --distributeStones);
+		}
+		return player.getOtherPlayer();
 	}
 
 	public BowlBase getKahala() {
 		return next.getKahala();
+	}
+
+	public BowlBase getWinner() {
+		return next.getWinner();
+	}
+
+	public boolean canPlay(Player player) {
+		if (isOwner(player) && numberOfStones > 0) {
+			return true;
+		}
+		return next.canPlay(player);
+	}
+
+	public void collectStones(Player player) {
+		((Kalaha)getKahala()).add(numberOfStones); //#todo not nice using Kalaha
+		numberOfStones = 0;
+		next.collectStones(player);
 	}
 }

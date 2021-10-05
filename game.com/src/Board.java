@@ -6,7 +6,6 @@
 
 public class Board {
 
-
 	private class CircularLinkedList {
 		private BowlBase head = null;
 		private BowlBase tail = null;
@@ -52,6 +51,18 @@ public class Board {
 		return bowl1Payer1.distribute(player, bowlNumber);
 	}
 
+	public BowlBase getHead() {
+		return clc.getHead();
+	}
+
+	public boolean canPlay(Player player) {
+		return bowl1Payer1.canPlay(player);
+	}
+
+	public Kalaha getWinner() {
+		return (Kalaha)bowl1Payer1.getWinner();
+	}
+
 	private CircularLinkedList createBoard(int[] stones) {
 		CircularLinkedList clc = new CircularLinkedList();
 		clc.add(new Bowl(player1, stones[0]));
@@ -69,10 +80,6 @@ public class Board {
 		clc.add(new Bowl(player2, stones[12]));
 		clc.add(new Kalaha(player2, stones[13]));
 		return clc;
-	}
-
-	public BowlBase getHead() {
-		return clc.getHead();
 	}
 
 }

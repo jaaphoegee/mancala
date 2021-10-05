@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -89,37 +91,43 @@ public class BoardTest {
 	public void testEndGameWhileThereAreStillStonesToPlay() {
 		final int[] testStones = new int[] { 1, 1, 1, 0, 1, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		/*
-		 * assertTrue( board.canPlay(player1));
-		 * assertTrue( board.canPlay(player2));
-		 */
-	assertFalse(true);
+		assertTrue(board.canPlay(player1));
+		assertTrue(board.canPlay(player2));
 	}
 
 	@Test
 	public void testEndGameWhenThereAreNoStonesToPlay() {
 		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 5 };
 		Board board = new Board(player1, player2, testStones);
-		/*
-		 * assertFalse( board.canPlay(player1));
-		 * assertTrue( board.canPlay(player2));
-		 */
-
-		assertFalse(true);
+		assertFalse(board.canPlay(player1));
+		assertTrue(board.canPlay(player2));
 	}
 
 	@Test
-	public void determineWinner()
-	{
-		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 8, 5, 1, 1, 4, 1, 1, 1, 5 };
+	public void testCollectStones() {
+		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 1, 2, 3, 4, 5, 6, 5 };
+		final int[] expectedStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 26 };
 		Board board = new Board(player1, player2, testStones);
-		/*
-		 * winner = board.GetWinner();
-		 * assertEquals(player2, winner);
-		 * stones = board.getKalaha(winner);
-		 * assertEquals(14, stones);
-		 */
-		assertFalse(true);
+		board.bowl1Payer1.collectStones(player1);
+		board.bowl1Payer1.collectStones(player2);
+		assertNumberOfStones(board, expectedStones);
+	}
+
+	@Test
+	public void determineWinner() {
+		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 14 };
+		Board board = new Board(player1, player2, testStones);
+		Kalaha winningKalaha = board.getWinner();
+		assertTrue(winningKalaha.isOwner(player2));
+		int stones = winningKalaha.getNumberOfStones();
+		assertEquals(14, stones);
+	}
+
+	@Test
+	public void determineNoWinner() {
+		final int[] testStones = new int[] { 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 14 };
+		Board board = new Board(player1, player2, testStones);
+		assertNull(board.getWinner());
 	}
 
 	private void assertNumberOfStones(Board board, int[] expectedStones) {
@@ -143,8 +151,7 @@ public class BoardTest {
 		BowlBase head = board.getHead();
 		BowlBase element = head;
 		do {
-			builder.append(element.getClass().getName() + " " + element.owner.getName() + " "
-					+ element.getNumberOfStones() + "\n");
+			builder.append(element.getClass().getName() + " " + element.owner.getName() + " " + element.getNumberOfStones() + "\n");
 			element = element.getNext();
 		} while (element != head);
 
