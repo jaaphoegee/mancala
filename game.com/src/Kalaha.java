@@ -1,10 +1,10 @@
 public class Kalaha extends BowlBase {
 
-	Kalaha(Player owner) {
+	public Kalaha(Player owner) {
 		this(owner, 0);
 	}
 
-	Kalaha(Player owner, int numberOfStones) {
+	public Kalaha(Player owner, int numberOfStones) {
 		super(owner, numberOfStones);
 	}
 
@@ -26,7 +26,7 @@ public class Kalaha extends BowlBase {
 	}
 
 	@Override
-	protected BowlBase getKahala() {
+	public BowlBase getKahala() {
 		return this;
 	}
 

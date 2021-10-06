@@ -1,10 +1,10 @@
 public class Bowl extends BowlBase {
 
-	Bowl(Player owner) {
+	public Bowl(Player owner) {
 		this(owner, 4);
 	}
 
-	Bowl(Player owner, int numberOfStones) {
+	public Bowl(Player owner, int numberOfStones) {
 		super(owner, numberOfStones);
 	}
 

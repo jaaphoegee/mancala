@@ -3,20 +3,20 @@ public abstract class BowlBase {
 	protected Player owner;
 	protected int numberOfStones;
 
-	BowlBase(Player owner, int stones) {
+	protected BowlBase(Player owner, int stones) {
 		this.owner = owner;
 		this.numberOfStones = stones;
 	}
 
-	public int getNumberOfStones() {
+	protected int getNumberOfStones() {
 		return numberOfStones;
 	}
 
-	public BowlBase getNext() {
+	protected BowlBase getNext() {
 		return next;
 	}
 
-	public void setNext(BowlBase node) {
+	protected void setNext(BowlBase node) {
 		next = node;
 	}
 
