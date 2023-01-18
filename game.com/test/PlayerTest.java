@@ -3,7 +3,6 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 
 public class PlayerTest {
 	private static Player player1;
@@ -39,10 +38,10 @@ public class PlayerTest {
 	@Test
 	public void setNextPlayerTest() {
 		player1.setCurrentPlayer(player2);
-		Assertions.assertEquals(player2, player1.getCurrentPlayer());
-		Assertions.assertEquals(player2, player2.getCurrentPlayer());
+		assertEquals(player2, player1.getCurrentPlayer());
+		assertEquals(player2, player2.getCurrentPlayer());
 		player1.setCurrentPlayer(player1);
-		Assertions.assertEquals(player1, player1.getCurrentPlayer());
-		Assertions.assertEquals(player1, player2.getCurrentPlayer());
+		assertEquals(player1, player1.getCurrentPlayer());
+		assertEquals(player1, player2.getCurrentPlayer());
 	}
 }
